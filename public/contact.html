@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #0f172a;
+      --secondary: #1f2937;
+      --accent: #6366f1;
+      --surface: rgba(255, 255, 255, 0.85);
+      --border: rgba(15, 23, 28, 0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(140deg, #0b1120 0%, #111827 55%, #1f2937 100%);
+      min-height: 100vh;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .card {
+      width: min(960px, 100%);
+      background: var(--surface);
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 80px rgba(12, 22, 26, 0.22);
+      backdrop-filter: blur(18px);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      overflow: hidden;
+    }
+
+    .panel {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .panel.dark {
+      background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 55%),
+        linear-gradient(180deg, rgba(17, 24, 39, 0.95), rgba(17, 24, 39, 0.85));
+      color: white;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.6vw + 1rem, 2.8rem);
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.6;
+      color: rgba(15, 23, 28, 0.72);
+    }
+
+    .dark p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  background: rgba(99, 102, 241, 0.12);
+  color: #8b5cf6;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(14px);
+    }
+
+    .contact-card span {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .contact-card a {
+      margin-top: 0.35rem;
+      display: inline-block;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-card a:hover {
+      color: var(--accent);
+    }
+
+    form {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(15, 23, 28, 0.82);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid rgba(15, 23, 28, 0.12);
+      border-radius: 16px;
+      padding: 0.85rem 1rem;
+      font: inherit;
+      background: rgba(255, 255, 255, 0.9);
+      color: inherit;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: rgba(99, 102, 241, 0.6);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    button {
+      justify-self: start;
+      padding: 0.85rem 2.2rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+  color: #0f172a;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.28);
+    }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .return {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+      transition: color 0.2s ease, border 0.2s ease;
+    }
+
+    .return:hover {
+      color: var(--accent);
+      border-color: rgba(99, 102, 241, 0.6);
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 2rem 1rem;
+      }
+
+      .panel {
+        padding: 2.5rem 2rem;
+      }
+
+      .return {
+        position: static;
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="return" href="/">Back</a>
+  <article class="card">
+    <section class="panel dark">
+      <span class="tag">Let us collaborate</span>
+      <h1>Tell me about your next bold move.</h1>
+      <p>
+        Whether you are reshaping a product or launching something entirely new, let us design a path that aligns brand, experience, and measurable growth. Reach out directly or share your project details and we will schedule a strategy call.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span>Email</span>
+          <a href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+        <div class="contact-card">
+          <span>LinkedIn</span>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">linkedin.com</a>
+        </div>
+        <div class="contact-card">
+          <span>Phone</span>
+          <a href="tel:+1234567890">+1 (234) 567-890</a>
+        </div>
+      </div>
+      <div class="meta">
+        <span>Accepting projects Q1-Q2 2025</span>
+        <span>Based in Remote / Worldwide</span>
+      </div>
+    </section>
+    <section class="panel">
+      <form>
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Your name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+        <label>
+          Company / Project
+          <input type="text" name="company" placeholder="Your company or project" />
+        </label>
+        <label>
+          Message
+          <textarea name="message" placeholder="Share what you would like to create" required></textarea>
+        </label>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </article>
+</body>
+</html>
